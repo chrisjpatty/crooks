@@ -100,7 +100,7 @@ The `useKeyboardShortcut` hook listens to "keydown" events on the Document, and 
 
 #### Basic Usage
 
-```
+```jsx
 import { useKeyboardShortcut } from 'crooks'
 
 const App = () => {
