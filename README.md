@@ -1,4 +1,4 @@
-![Crooks](https://github.com/chrisjpatty/crooks/blob/master/logo.png)
+![Crooks](https://github.com/chrisjpatty/crooks/blob/master/logo.png?)
 
 # crooks
 
