@@ -85,3 +85,36 @@ remove("zoep31a")
 ```jsx
 clear()
 ```
+
+# useKeyboardShortcut
+
+The `useKeyboardShortcut` hook listens to "keydown" events on the Document, and will call the provided action when the specified Javascript keyCode is detected. The shortcut listener is enabled by default, but can be declaratively disabled by passing `disabled: true` to the hook.
+
+[keyboard.info](https://keycode.info) is a great resource for finding Javascript keyCodes.
+
+#### Basic Usage
+
+```
+import { useKeyboardShortcut } from 'crooks'
+
+const App = () => {
+  const submit = () => {
+    console.log('Submitted')
+  }
+
+  const {enable, disable} = useKeyboardShortcut({
+    keyCode: 13,
+    action: submit,
+    disabled: false // This key is not required
+  })
+
+  return (
+    <div>
+      <button onClick={enable}>Enable</button>
+      <button onClick={disable}>Disable</button>
+    </div>
+  )
+}
+```
+
+With keyboard shortcuts, there are times when you may want to imperatively enable or disable the shortcut listener. For these occasions, the hook returns `enable` and `disable` functions.
