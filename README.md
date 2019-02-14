@@ -56,7 +56,7 @@ By default, each file has an automatically generated id generated using the [sho
 
 The `files` object returned as the first parameter of the hook represents all of the current files as an object, with each file's ID as the key, and the file as the value.
 
-### Adding Files
+#### Adding Files
 
 The first parameter of the add function may be any JSON-serializable data and is required. The data will be saved as a new file with an automatically generated ID. If you would like to override the automatically-generated ID, you may pass a String or Int as the second parameter and it will be used as the ID. If the ID already exists, the existing file will be overwritten.
 
@@ -64,7 +64,7 @@ The first parameter of the add function may be any JSON-serializable data and is
 add("Any JSON-serializable data to be saved as a new file.")
 ```
 
-### Updating Files
+#### Updating Files
 
 To update a file, pass as the first parameter, the ID of the file you want to update. The second parameter is the data you want to overwrite the file with.
 
@@ -72,7 +72,7 @@ To update a file, pass as the first parameter, the ID of the file you want to up
 update("jal31af", "The new data to overwrite the file with.")
 ```
 
-### Removing Files
+#### Removing Files
 
 The remove function simply accepts a file ID of the file you wish to remove.
 
@@ -80,7 +80,7 @@ The remove function simply accepts a file ID of the file you wish to remove.
 remove("zoep31a")
 ```
 
-### Clearing all Files
+#### Clearing all Files
 
 ```jsx
 clear()
