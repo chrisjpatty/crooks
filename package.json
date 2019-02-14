@@ -1,10 +1,9 @@
 {
   "name": "crooks",
   "description": "A collection of useful React hooks",
-  "version": "1.0.17",
-  "main": "dist/crooks.umd.js",
+  "version": "1.0.18",
+  "main": "dist/crooks.cjs.js",
   "module": "dist/crooks.esm.js",
-  "browser": "dist/crooks.cjs.js",
   "repository": {
     "type": "git",
     "url": "https://www.github.com/chrisjpatty/crooks.git"
