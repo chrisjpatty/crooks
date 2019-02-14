@@ -1,10 +1,13 @@
 {
   "name": "crooks",
-  "version": "1.0.11",
+  "version": "1.0.12",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.cjs.js",
-  "respository": "https://www.github.com/chrisjpatty/crooks",
+  "repository": {
+    "type" : "git",
+    "url" : "https://www.github.com/chrisjpatty/crooks.git"
+  },
   "dependencies": {
     "local-storage": "^1.4.2",
     "shortid": "^2.2.14"
