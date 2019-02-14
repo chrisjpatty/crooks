@@ -6,7 +6,8 @@
   "browser": "dist/index.cjs.js",
   "respository": "https://www.github.com/chrisjpatty/crooks",
   "dependencies": {
-    "local-storage": "^1.4.2"
+    "local-storage": "^1.4.2",
+    "shortid": "^2.2.14"
   },
   "devDependencies": {
     "rollup": "^1.0.0",
