@@ -1,7 +1,8 @@
 import shortid from 'shortid'
+import useLocalStorage from './useLocalStorage'
 
 const useFiler = key => {
-  const [files, setFiles] = useLocalStorageState(key, {})
+  const [files, setFiles] = useLocalStorage(key, {})
 
   const add = (data, id) => {
     const newKey = id || shortid.generate()

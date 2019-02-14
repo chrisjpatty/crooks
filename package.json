@@ -1,7 +1,7 @@
 {
   "name": "crooks",
   "description": "A collection of useful React hooks",
-  "version": "1.0.13",
+  "version": "1.0.14",
   "main": "dist/index.umd.js",
   "module": "dist/index.esm.js",
   "browser": "dist/index.cjs.js",
