@@ -1,13 +1,13 @@
 {
   "name": "crooks",
   "description": "A collection of useful React hooks",
-  "version": "1.0.15",
-  "main": "dist/index.umd.js",
-  "module": "dist/index.esm.js",
-  "browser": "dist/index.cjs.js",
+  "version": "1.0.17",
+  "main": "dist/crooks.umd.js",
+  "module": "dist/crooks.esm.js",
+  "browser": "dist/crooks.cjs.js",
   "repository": {
-    "type" : "git",
-    "url" : "https://www.github.com/chrisjpatty/crooks.git"
+    "type": "git",
+    "url": "https://www.github.com/chrisjpatty/crooks.git"
   },
   "dependencies": {
     "local-storage": "^1.4.2",
