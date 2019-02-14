@@ -493,7 +493,7 @@
 	var shortid = lib;
 
 	const useFiler = key => {
-	  const [files, setFiles] = useLocalStorage(key, {});
+	  const [files, setFiles] = useLocalStorage$1(key, {});
 
 	  const add = (data, id) => {
 	    const newKey = id || shortid.generate();

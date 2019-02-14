@@ -1,5 +1,5 @@
 import shortid from 'shortid'
-import useLocalStorage from './useLocalStorage'
+import {useLocalStorage} from './main'
 
 const useFiler = key => {
   const [files, setFiles] = useLocalStorage(key, {})
