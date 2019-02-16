@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import ls from 'local-storage';
 import shortid from 'shortid';
 
@@ -93,8 +93,33 @@ var keyboardShortcut = ({keyCode, action, disabled}) => {
   return {enable, disable}
 };
 
+var onClickOutside = (onClickOutside, disabled) => {
+  const ref = useRef();
+
+  useEffect(() => {
+    if(!disabled){
+      window.addEventListener('click', checkForClickOutside);
+      return () => {
+        window.removeEventListener('click', checkForClickOutside);
+      }
+    }else{
+      window.removeEventListener('click', checkForClickOutside);
+    }
+  }, [disabled]);
+
+  const checkForClickOutside = e => {
+    if(ref.current){
+      if(!ref.current.contains(e.target)){
+        onClickOutside();
+      }
+    }
+  };
+  return ref;
+};
+
 const useLocalStorage$1 = useLocalStorage;
 const useFiler$1 = useFiler;
 const useKeyboardShortcut = keyboardShortcut;
+const useOnClickOutside = onClickOutside;
 
-export { useLocalStorage$1 as useLocalStorage, useFiler$1 as useFiler, useKeyboardShortcut };
+export { useLocalStorage$1 as useLocalStorage, useFiler$1 as useFiler, useKeyboardShortcut, useOnClickOutside };

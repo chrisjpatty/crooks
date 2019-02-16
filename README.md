@@ -9,6 +9,7 @@ A collection of useful react hooks by [@chrisjpatty](https://github.com/chrisjpa
 - [useLocalStorage](https://www.github.com/chrisjpatty/crooks#useLocalStorage)
 - [useFiler](https://www.github.com/chrisjpatty/crooks#useFiler)
 - [useKeyboardShortcut](https://www.github.com/chrisjpatty/crooks#useKeyboardShortcut)
+- [useOnClickOutside](https://www.github.com/chrisjpatty/crooks#useOnClickOutside)
 
 # useLocalStorage
 
@@ -124,3 +125,56 @@ const App = () => {
 ```
 
 With keyboard shortcuts, there are times when you may want to imperatively enable or disable the shortcut listener. For these occasions, the hook returns `enable` and `disable` functions.
+
+# useOnClickOutside
+
+`useOnClickOutside` accepts a function that will be called when there's a click outside of a target element. The hook returns a ref, which you pass to the ref attribute of the element you want to target.
+
+#### Basic Usage
+
+```jsx
+import { useOnClickOutside } from 'crooks'
+
+const App = () => {
+  const handleClickOutside = () => {
+    console.log("You clicked outside of the blue box")
+  }
+
+  const outsideRef = useOnClickOutside(handleClickOutside)
+
+  return (
+    <div>
+      <div ref={outsideRef}> I'm a blue box </div>
+    </div>
+  )
+}
+```
+
+#### Disabling the listener
+
+For performance reasons, you may not want to always listen for clicks outside of an element. For these times you can pass a `Boolean` as a second parameter to this hook representing whether or not the listener should be disabled like so:
+
+
+```jsx
+import { useState } from 'react'
+import { useOnClickOutside } from 'crooks'
+
+const App = () => {
+  const [isDisabled, setIsDisabled] = useState(false)
+
+  const disableOnOutside = () => setIsDisabled(true)
+
+  const handleClickOutside = () => {
+    console.log("You clicked outside of the blue box")
+  }
+
+  const outsideRef = useOnClickOutside(handleClickOutside, isDisabled)
+
+  return (
+    <div>
+      <button onClick={disableOnOutside}>Stop listening for outside clicks</button>
+      <div ref={outsideRef}> I'm a blue box </div>
+    </div>
+  )
+}
+```

@@ -99,10 +99,36 @@ var keyboardShortcut = ({keyCode, action, disabled}) => {
   return {enable, disable}
 };
 
+var onClickOutside = (onClickOutside, disabled) => {
+  const ref = react.useRef();
+
+  react.useEffect(() => {
+    if(!disabled){
+      window.addEventListener('click', checkForClickOutside);
+      return () => {
+        window.removeEventListener('click', checkForClickOutside);
+      }
+    }else{
+      window.removeEventListener('click', checkForClickOutside);
+    }
+  }, [disabled]);
+
+  const checkForClickOutside = e => {
+    if(ref.current){
+      if(!ref.current.contains(e.target)){
+        onClickOutside();
+      }
+    }
+  };
+  return ref;
+};
+
 const useLocalStorage$1 = useLocalStorage;
 const useFiler$1 = useFiler;
 const useKeyboardShortcut = keyboardShortcut;
+const useOnClickOutside = onClickOutside;
 
 exports.useLocalStorage = useLocalStorage$1;
 exports.useFiler = useFiler$1;
 exports.useKeyboardShortcut = useKeyboardShortcut;
+exports.useOnClickOutside = useOnClickOutside;

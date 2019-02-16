@@ -1,7 +1,7 @@
 {
   "name": "crooks",
   "description": "A collection of useful React hooks",
-  "version": "1.0.18",
+  "version": "1.0.2",
   "main": "dist/crooks.cjs.js",
   "module": "dist/crooks.esm.js",
   "repository": {
@@ -38,6 +38,10 @@
     "localstorage",
     "files",
     "keyboard",
-    "shortcut"
+    "shortcut",
+    "useFiler",
+    "useKeyboardShortcut",
+    "useLocalStorage",
+    "useOnClickOutside"
   ]
 }
