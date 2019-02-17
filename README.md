@@ -79,6 +79,12 @@ To update a file, pass as the first parameter, the ID of the file you want to up
 update("jal31af", "The new data to overwrite the file with.")
 ```
 
+As with the native `useState`, `update()` accepts a callback function injected with the previous file.
+
+```jsx
+update("jal31af", file => ([...file.data, "New item"]))
+```
+
 #### Removing Files
 
 The remove function simply accepts a file ID of the file you wish to remove.
