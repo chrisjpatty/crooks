@@ -4,6 +4,16 @@
 
 A collection of useful react hooks by [@chrisjpatty](https://github.com/chrisjpatty).
 
+# Installing
+
+```bash
+yarn add crooks
+```
+
+```bash
+npm install crooks --save
+```
+
 ## Available Hooks
 
 - [useLocalStorage](https://www.github.com/chrisjpatty/crooks#useLocalStorage)
