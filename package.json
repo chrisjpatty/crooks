@@ -35,7 +35,7 @@
     "dev": "rollup -c -w",
     "test": "jest",
     "pretest": "npm run build",
-    "coveralls": "jest --coverage && cat ./coverage/lcov.info | coveralls"
+    "coveralls": "jest --coverage --collectCoverageFrom=src/**/*.js && cat ./coverage/lcov.info | coveralls"
   },
   "files": [
     "dist"

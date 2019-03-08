@@ -85,9 +85,11 @@ export const KeyboardShortcut = ({disabled}) => {
     action: onKey,
     disabled
   })
+
   return (
     <div>
-      <div>KEYDOWN</div>
+      <div onClick={disable}>DISABLE</div>
+      <div onClick={enable}>ENABLE</div>
       <div>{fruit}</div>
     </div>
   )

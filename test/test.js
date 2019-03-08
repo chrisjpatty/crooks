@@ -130,4 +130,20 @@ describe('useKeyboardShortcut', () => {
     })
     getByText('pear')
   })
+  test("Enable/disable functions work correctly", () => {
+    const { getByText } = render(<KeyboardShortcut/>)
+    getByText('apple')
+    fireEvent.click(getByText('DISABLE'))
+    act(() => {
+      var event = new KeyboardEvent('keydown', {'keyCode': 65});
+      document.dispatchEvent(event);
+    })
+    getByText('apple')
+    fireEvent.click(getByText('ENABLE'))
+    act(() => {
+      var event = new KeyboardEvent('keydown', {'keyCode': 65});
+      document.dispatchEvent(event);
+    })
+    getByText('pear')
+  })
 })
