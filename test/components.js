@@ -42,6 +42,11 @@ export const FilerTest = ({getState}) => {
     update(id, 'pear')
   }
 
+  const updateCallbackFile = () => {
+    const id = Object.keys(files)[0]
+    update(id, file => file.data + 'pear')
+  }
+
   const clearFiles = () => {
     clear()
   }
@@ -52,12 +57,13 @@ export const FilerTest = ({getState}) => {
       <button onClick={addFileWithID}>ADDID</button>
       <button onClick={removeFile}>REMOVE</button>
       <button onClick={updateFile}>UPDATE</button>
+      <button onClick={updateCallbackFile}>UPDATE_CALLBACK</button>
       <button onClick={clearFiles}>CLEAR</button>
     </div>
   )
 }
 
-export const OnClickOutside = ({disabled}) => {
+export const OnClickOutside = ({disabled, noref}) => {
   const [fruit, setFruit] = React.useState('apple')
 
   const handleClickOutside = () => setFruit('pear')
@@ -66,7 +72,7 @@ export const OnClickOutside = ({disabled}) => {
 
   return (
     <div>
-      <div ref={outsideRef} style={{padding: 10}}>
+      <div ref={!noref ? outsideRef : undefined} style={{padding: 10}}>
         <div>MODAL</div>
       </div>
       <div>OUTSIDE</div>

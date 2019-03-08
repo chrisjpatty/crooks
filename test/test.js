@@ -84,6 +84,17 @@ describe('useFiler', () => {
     expect(file.created === created).toBe(true)
     expect(file.modified === modified).toBe(false)
   })
+  test('File update callback updates correctly', () => {
+    const { getByText } = render(<FilerTest getState={getState}/>)
+    fireEvent.click(getByText('ADD'))
+    expect(Object.keys(state).length).toBe(1)
+    const { modified, created } = state[Object.keys(state)[0]]
+    fireEvent.click(getByText('UPDATE_CALLBACK'))
+    const file = state[Object.keys(state)[0]]
+    expect(file.data).toBe('applepear')
+    expect(file.created === created).toBe(true)
+    expect(file.modified === modified).toBe(false)
+  })
   test('Files clear correctly', () => {
     const { getByText } = render(<FilerTest getState={getState}/>)
     fireEvent.click(getByText('ADD'))
@@ -98,6 +109,12 @@ describe('useFiler', () => {
 describe('useOnClickOutside', () => {
   test("Click inside doesn't trigger handler",  () => {
     const { getByText } = render(<OnClickOutside/>)
+    getByText('apple')
+    fireEvent.click(getByText('MODAL'))
+    getByText('apple')
+  })
+  test("Click without ref doesn't trigger handler",  () => {
+    const { getByText } = render(<OnClickOutside noref/>)
     getByText('apple')
     fireEvent.click(getByText('MODAL'))
     getByText('apple')
@@ -129,6 +146,24 @@ describe('useKeyboardShortcut', () => {
       document.dispatchEvent(event);
     })
     getByText('pear')
+  })
+  test("Pressing \"a\" doesn't trigger handler when disabled", () => {
+    const { getByText } = render(<KeyboardShortcut disabled/>)
+    getByText('apple')
+    act(() => {
+      var event = new KeyboardEvent('keydown', {'keyCode': 65});
+      document.dispatchEvent(event);
+    })
+    getByText('apple')
+  })
+  test("Pressing \"c\" doesn't trigger handler", () => {
+    const { getByText } = render(<KeyboardShortcut/>)
+    getByText('apple')
+    act(() => {
+      var event = new KeyboardEvent('keydown', {'keyCode': 67});
+      document.dispatchEvent(event);
+    })
+    getByText('apple')
   })
   test("Enable/disable functions work correctly", () => {
     const { getByText } = render(<KeyboardShortcut/>)
