@@ -1,7 +1,7 @@
 {
   "name": "crooks",
   "description": "A collection of useful React hooks",
-  "version": "1.0.22",
+  "version": "1.0.23",
   "main": "dist/crooks.cjs.js",
   "module": "dist/crooks.esm.js",
   "repository": {
