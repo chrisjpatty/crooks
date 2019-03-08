@@ -1,7 +1,7 @@
-import { useEffect } from 'react'
+import React from 'react'
 
 export default ({keyCode, action, disabled}) => {
-  useEffect(() => {
+  React.useEffect(() => {
     if(!disabled){
       enable()
     }

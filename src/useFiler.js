@@ -20,7 +20,7 @@ const useFiler = key => {
   }
 
   const remove = id => {
-    setFiles(({[id]: deleted, newFiles}) => newFiles)
+    setFiles(({[id]: deleted, ...newFiles}) => newFiles)
   }
 
   const update = (id, data) => {

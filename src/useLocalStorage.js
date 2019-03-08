@@ -1,13 +1,16 @@
-import { useState } from 'react'
+import React from 'react'
 import ls from 'local-storage'
 
 const getCache = (key, initial) => {
   const cached = ls.get(key)
+  if(cached === null && initial !== null){
+    ls.set(key, initial)
+  }
   return cached !== null ? cached : initial
 }
 
 const useLocalStorage = (key, initial) => {
-  const [nativeState, setNativeState] = useState(getCache(key, initial))
+  const [nativeState, setNativeState] = React.useState(getCache(key, initial))
   const setState = state => {
     if(typeof state === 'function'){
       setNativeState(prev => {

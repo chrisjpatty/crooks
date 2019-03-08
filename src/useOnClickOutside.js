@@ -1,9 +1,9 @@
-import { useRef, useEffect } from 'react'
+import React from 'react'
 
 export default (onClickOutside, disabled) => {
-  const ref = useRef()
+  const ref = React.useRef()
 
-  useEffect(() => {
+  React.useEffect(() => {
     if(!disabled){
       window.addEventListener('click', checkForClickOutside)
       return () => {

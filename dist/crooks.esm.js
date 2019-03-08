@@ -1,14 +1,17 @@
-import { useState, useEffect, useRef } from 'react';
+import React from 'react';
 import ls from 'local-storage';
 import shortid from 'shortid';
 
 const getCache = (key, initial) => {
   const cached = ls.get(key);
+  if(cached === null && initial !== null){
+    ls.set(key, initial);
+  }
   return cached !== null ? cached : initial
 };
 
 const useLocalStorage = (key, initial) => {
-  const [nativeState, setNativeState] = useState(getCache(key, initial));
+  const [nativeState, setNativeState] = React.useState(getCache(key, initial));
   const setState = state => {
     if(typeof state === 'function'){
       setNativeState(prev => {
@@ -44,7 +47,7 @@ const useFiler = key => {
   };
 
   const remove = id => {
-    setFiles(({[id]: deleted, newFiles}) => newFiles);
+    setFiles(({[id]: deleted, ...newFiles}) => newFiles);
   };
 
   const update = (id, data) => {
@@ -53,7 +56,7 @@ const useFiler = key => {
       [id]: {
         ...files[id],
         modified: Date.now(),
-        data
+        data: typeof data === 'function' ? data(files[id]) : data
       }
     }));
   };
@@ -66,7 +69,7 @@ const useFiler = key => {
 };
 
 var keyboardShortcut = ({keyCode, action, disabled}) => {
-  useEffect(() => {
+  React.useEffect(() => {
     if(!disabled){
       enable();
     }
@@ -94,9 +97,9 @@ var keyboardShortcut = ({keyCode, action, disabled}) => {
 };
 
 var onClickOutside = (onClickOutside, disabled) => {
-  const ref = useRef();
+  const ref = React.useRef();
 
-  useEffect(() => {
+  React.useEffect(() => {
     if(!disabled){
       window.addEventListener('click', checkForClickOutside);
       return () => {
