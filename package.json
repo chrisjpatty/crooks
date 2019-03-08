@@ -32,7 +32,7 @@
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
-    "test": "node test/test.js",
+    "test": "jest",
     "pretest": "npm run build"
   },
   "files": [
