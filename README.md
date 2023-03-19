@@ -28,15 +28,13 @@ npm install crooks --save
 When the app reloads, the hook will first look for a previously cached value. If one is found, it will be used as the initial value instead of the provided initial value.
 
 ```jsx
-import { useLocalStorage } from 'crooks'
+import { useLocalStorage } from "crooks";
 
 const App = () => {
-  const [state, setState] = useLocalStorage("LOCAL_STORAGE_KEY", initialValue)
+  const [state, setState] = useLocalStorage("LOCAL_STORAGE_KEY", initialValue);
 
-  return (
-    <div>App</div>
-  )
-}
+  return <div>App</div>;
+};
 ```
 
 # useFiler
@@ -48,20 +46,19 @@ const App = () => {
 When the hook is first initialized it returns the files as an empty object.
 
 ```jsx
-import { useFiler } from 'crooks'
+import { useFiler } from "crooks";
 
 const App = () => {
-  const [files, {add, remove, update, clear}] = useFiler("LOCAL_STORAGE_KEY")
+  const [files, { add, remove, update, clear }] = useFiler("LOCAL_STORAGE_KEY");
 
-  return (
-    <div>App</div>
-  )
-}
+  return <div>App</div>;
+};
 ```
 
 #### File Structure
 
 By default, each file has an automatically generated id generated using the [shortid](https://www.npmjs.com/package/shortid) package. Each single file is structured as follows:
+
 ```
 {
   id: "ogn41na",
@@ -78,7 +75,7 @@ The `files` object returned as the first parameter of the hook represents all of
 The first parameter of the add function may be any JSON-serializable data and is required. The data will be saved as a new file with an automatically generated ID. If you would like to override the automatically-generated ID, you may pass a String or Int as the second parameter and it will be used as the ID. If the ID already exists, the existing file will be overwritten.
 
 ```jsx
-add("Any JSON-serializable data to be saved as a new file.")
+add("Any JSON-serializable data to be saved as a new file.");
 ```
 
 #### Updating Files
@@ -86,13 +83,13 @@ add("Any JSON-serializable data to be saved as a new file.")
 To update a file, pass as the first parameter, the ID of the file you want to update. The second parameter is the data you want to overwrite the file with.
 
 ```jsx
-update("jal31af", "The new data to overwrite the file with.")
+update("jal31af", "The new data to overwrite the file with.");
 ```
 
 As with the native `useState`, `update()` accepts a callback function injected with the previous file.
 
 ```jsx
-update("jal31af", file => ([...file.data, "New item"]))
+update("jal31af", (file) => [...file.data, "New item"]);
 ```
 
 #### Removing Files
@@ -100,13 +97,13 @@ update("jal31af", file => ([...file.data, "New item"]))
 The remove function simply accepts a file ID of the file you wish to remove.
 
 ```jsx
-remove("zoep31a")
+remove("zoep31a");
 ```
 
 #### Clearing all Files
 
 ```jsx
-clear()
+clear();
 ```
 
 # useKeyboardShortcut
@@ -118,26 +115,26 @@ The `useKeyboardShortcut` hook listens to "keydown" events on the Document, and 
 #### Basic Usage
 
 ```jsx
-import { useKeyboardShortcut } from 'crooks'
+import { useKeyboardShortcut } from "crooks";
 
 const App = () => {
   const submit = () => {
-    console.log('Submitted')
-  }
+    console.log("Submitted");
+  };
 
-  const {enable, disable} = useKeyboardShortcut({
-    keyCode: 13,
-    action: submit,
-    disabled: false // This key is not required
-  })
+  const { enable, disable } = useKeyboardShortcut({
+    key: "Enter",
+    onKeyPressed: submit,
+    disabled: false, // This key is not required
+  });
 
   return (
     <div>
       <button onClick={enable}>Enable</button>
       <button onClick={disable}>Disable</button>
     </div>
-  )
-}
+  );
+};
 ```
 
 With keyboard shortcuts, there are times when you may want to imperatively enable or disable the shortcut listener. For these occasions, the hook returns `enable` and `disable` functions.
@@ -149,48 +146,49 @@ With keyboard shortcuts, there are times when you may want to imperatively enabl
 #### Basic Usage
 
 ```jsx
-import { useOnClickOutside } from 'crooks'
+import { useOnClickOutside } from "crooks";
 
 const App = () => {
   const handleClickOutside = () => {
-    console.log("You clicked outside of the blue box")
-  }
+    console.log("You clicked outside of the blue box");
+  };
 
-  const outsideRef = useOnClickOutside(handleClickOutside)
+  const outsideRef = useOnClickOutside(handleClickOutside);
 
   return (
     <div>
       <div ref={outsideRef}> I'm a blue box </div>
     </div>
-  )
-}
+  );
+};
 ```
 
 #### Disabling the listener
 
 For performance reasons, you may not want to always listen for clicks outside of an element. For these times you can pass a `Boolean` as a second parameter to this hook representing whether or not the listener should be disabled like so:
 
-
 ```jsx
-import { useState } from 'react'
-import { useOnClickOutside } from 'crooks'
+import { useState } from "react";
+import { useOnClickOutside } from "crooks";
 
 const App = () => {
-  const [isDisabled, setIsDisabled] = useState(false)
+  const [isDisabled, setIsDisabled] = useState(false);
 
-  const disableOnOutside = () => setIsDisabled(true)
+  const disableOnOutside = () => setIsDisabled(true);
 
   const handleClickOutside = () => {
-    console.log("You clicked outside of the blue box")
-  }
+    console.log("You clicked outside of the blue box");
+  };
 
-  const outsideRef = useOnClickOutside(handleClickOutside, isDisabled)
+  const outsideRef = useOnClickOutside(handleClickOutside, isDisabled);
 
   return (
     <div>
-      <button onClick={disableOnOutside}>Stop listening for outside clicks</button>
+      <button onClick={disableOnOutside}>
+        Stop listening for outside clicks
+      </button>
       <div ref={outsideRef}> I'm a blue box </div>
     </div>
-  )
-}
+  );
+};
 ```
