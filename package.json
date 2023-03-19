@@ -1,35 +1,48 @@
 {
   "name": "crooks",
   "description": "A collection of useful React hooks",
-  "version": "1.0.23",
-  "main": "dist/crooks.cjs.js",
-  "module": "dist/crooks.esm.js",
+  "version": "1.0.24",
+  "browser": "dist/index.umd.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es.js",
   "repository": {
     "type": "git",
     "url": "https://www.github.com/chrisjpatty/crooks.git"
   },
   "dependencies": {
-    "local-storage": "^1.4.2",
-    "shortid": "^2.2.14"
+    "@testing-library/react": "^14.0.0",
+    "local-storage": "^2.0.0",
+    "nanoid": "^4.0.1"
   },
   "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.21.0",
     "@babel/preset-env": "^7.3.4",
     "@babel/preset-react": "^7.0.0",
+    "@rollup/plugin-babel": "^5.3.1",
+    "@rollup/plugin-commonjs": "^21.0.2",
+    "@rollup/plugin-node-resolve": "^13.1.3",
+    "@rollup/plugin-replace": "^4.0.0",
+    "@rollup/plugin-typescript": "^8.3.2",
+    "@types/react": "^18.0.28",
     "babel-jest": "^24.3.1",
     "babel-polyfill": "^6.26.0",
     "coveralls": "^3.0.3",
     "jest": "^24.3.1",
     "jest-dom": "^3.1.2",
     "jest-localstorage-mock": "^2.4.0",
-    "react": "^16.8.4",
-    "react-dom": "^16.8.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
     "react-test-renderer": "^16.8.4",
-    "react-testing-library": "^6.0.0",
-    "rollup": "^1.0.0",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-node-resolve": "^4.0.0"
+    "rollup": "^2.70.2",
+    "rollup-plugin-peer-deps-external": "^2.2.0",
+    "tslib": "^2.5.0",
+    "typescript": "^5.0.2"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "prop-types": "^15.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
   "scripts": {
     "build": "rollup -c",
     "dev": "rollup -c -w",
